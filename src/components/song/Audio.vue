@@ -1,20 +1,21 @@
 <template>
   <div class="audio">
-<MiddAudio
-:progress="progress"
-v-if="fullScreen"
-@changprogress='changprogress'
-:value='playing'
- @input="changplaying"
- :currentime="currentime"
- :duration="duration"
- @fangdou='fangdou'
- :ulyric='ulyric'
- @changlocathin='changlocathin'
- >
- </MiddAudio>
-<MinAudio :progress="progress" v-if="!fullScreen"></MinAudio>
-<audio :src="musicurl" id='audio' ></audio>
+    <MiddAudio :progress="progress"
+               v-if="fullScreen"
+               @changprogress='changprogress'
+               :value='playing'
+               @input="changplaying"
+               :currentime="currentime"
+               :duration="duration"
+               @fangdou='fangdou'
+               :ulyric='ulyric'
+               @changlocathin='changlocathin'>
+    </MiddAudio>
+    <MinAudio :progress="progress"
+              v-if="!fullScreen">
+    </MinAudio>
+    <audio :src="musicurl"
+           id='audio'></audio>
 
   </div>
 

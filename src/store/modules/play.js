@@ -18,8 +18,8 @@ export default {
   },
   getters: {
     // 当前播放的歌曲
-    // eslint-disable-next-line space-before-function-paren
-    currentsong(store) {
+
+    currentsong (store) {
       if (store.currenindex < 0 || store.currenindex > store.playing.lenght) {
         return {}
       } else {
@@ -30,7 +30,7 @@ export default {
   mutations: {
     //  歌单点击后的处理函数
     // eslint-disable-next-line space-before-function-paren
-    getindexlist(store, indexlist) {
+    getindexlist (store, indexlist) {
       // JSON.parse(JSON.stringify(indexlist.songList))
       store.sequencelist = [...indexlist.songList]// 对象是引用所以要再拷贝一份
       store.currenindex = indexlist.index
@@ -65,7 +65,7 @@ export default {
     },
     // 改变播放模式
     // eslint-disable-next-line space-before-function-paren
-    changemode(store) {
+    changemode (store) {
       var changlistbeforeid = store.playlist[store.currenindex].id
       console.log(changlistbeforeid)
       store.mode = (store.mode + 1) % 3
@@ -102,11 +102,11 @@ export default {
       })
     },
     // eslint-disable-next-line space-before-function-paren
-    changplayaction(store, changplay) {
+    changplayaction (store, changplay) {
       store.playing = changplay.playing
     },
     // eslint-disable-next-line space-before-function-paren
-    changcurrenindex(store, code) {
+    changcurrenindex (store, code) {
       if (store.currenindex + code.code < 0) {
         store.currenindex = 0
         return
@@ -119,7 +119,7 @@ export default {
       console.log(store.currenindex)
     },
     // eslint-disable-next-line space-before-function-paren
-    changfullscreenaction(store) {
+    changfullscreenaction (store) {
       store.fullScreen = !store.fullScreen
     }
 

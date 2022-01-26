@@ -25,7 +25,6 @@ export default {
   created () {
     this.getnewMusic()
   },
-
   methods: {
     async getnewMusic () {
       try {

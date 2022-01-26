@@ -70,6 +70,7 @@
 import NewMV from '../components/Home/newMv.vue'
 import NewMusic from '../components/Home/newMusic.vue'
 import Footer from '../components/Home/footer.vue'
+// console.log(NewMusic.putda())
 export default {
   name: 'Home',
   components: {

@@ -1,45 +1,47 @@
 /* eslint-disable no-cond-assign */
 <template>
   <div class="index">
-    <div class="part" v-if="id==1">
+    <div class="part"
+         v-if="id==1">
       <van-form @submit="onSubmit">
-          <van-field
-            v-model="username"
-            name="phone"
-            label="用户名"
-            placeholder="用户名"
-          />
-          <van-field
-              v-model="password"
-              type="password"
-              name="password"
-              label="密码"
-              placeholder="密码"
-            />
-            <div style="margin: 16px;">
-              <van-button round block type="info" native-type="submit">提交</van-button>
-            </div>
+        <van-field v-model="username"
+                   name="phone"
+                   label="用户名"
+                   placeholder="用户名" />
+        <van-field v-model="password"
+                   type="password"
+                   name="password"
+                   label="密码"
+                   placeholder="密码" />
+        <div style="margin: 16px;">
+          <van-button round
+                      block
+                      type="info"
+                      native-type="submit">提交</van-button>
+        </div>
       </van-form>
     </div>
-    <div class="part" v-else>
+    <div class="part"
+         v-else>
       <van-form @submit="onSubmit">
-          <van-field
-            v-model="username"
-            name="username"
-            label="用户名"
-            placeholder="用户名"
-          />
-          <van-field
-            v-model="code"
-            type="text"
-            name="code"
-            label="验证码"
-            placeholder="验证码"
-          />
-          <div style="margin: 16px;">
-            <van-button round block type="info" native-type="submit" color='red'>登陆</van-button>
-            <van-button native-type="button" @click=onClick>发送验证码</van-button>
-          </div>
+        <van-field v-model="username"
+                   name="username"
+                   label="用户名"
+                   placeholder="用户名" />
+        <van-field v-model="code"
+                   type="text"
+                   name="code"
+                   label="验证码"
+                   placeholder="验证码" />
+        <div style="margin: 16px;">
+          <van-button round
+                      block
+                      type="info"
+                      native-type="submit"
+                      color='red'>登陆</van-button>
+          <van-button native-type="button"
+                      @click=onClick>发送验证码</van-button>
+        </div>
 
       </van-form>
 
@@ -53,8 +55,8 @@ export default {
   data () {
     return {
       id: this.$route.params.id,
-      username: '13990822769',
-      password: 'LYP19961021',
+      username: '',
+      password: '',
       code: ''
     }
   },

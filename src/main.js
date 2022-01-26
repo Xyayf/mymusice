@@ -14,6 +14,7 @@ import Index from '@/assets/index.js'
 Vue.use(VideoPlayer)
 
 Vue.use(Lazyload)
+console.log(App)
 
 Vue.prototype.axios = axios.create({
   baseURL: 'http://localhost:8888'
@@ -22,30 +23,42 @@ Vue.prototype.Index = Index
 // console.log(Vant)
 Vue.use(Vant)
 Vue.config.productionTip = false
+const copon = Vue.component('my-component-name', {
+  // eslint-disable-next-line space-before-function-paren
+  create() {
+    console.log(this
+    )
+  }
+})
+console.log(copon)
+console.log(router)
+router.beforeEach((to, from, next) => {
+  var isLogin = localStorage.getItem('userinfo')
+  if (isLogin) {
+    next()
+  } else {
+    next({
+      path: '/login'
+    })
+  }
 
-// router.beforeEach((to, from, next) => {
-//   var isLogin = localStorage.getItem('userinfo')
-//   if (isLogin) {
-//     next()
-//   } else {
-//     next({
-//       path: '/login'
-//     })
-//   }
+  if (to.fullPath === '/login') {
+    /* 如果本地 存在 token 则直接跳转到后台首页 */
+    if (isLogin) {
+      next({
+        path: '/home'
+      })
+    } else {
+      next()
+    }
+  }
+})
+console.log(router)
 
-//   if (to.fullPath === '/login') {
-//     /* 如果本地 存在 token 则直接跳转到后台首页 */
-//     if (isLogin) {
-//       next({
-//         path: '/home'
-//       })
-//     } else {
-//       next()
-//     }
-//   }
-// })
-new Vue({
+console.log(new Vue({
+  // eslint-disable-next-line space-before-function-paren
+
   router,
   store,
   render: h => h(App)
-}).$mount('#app')
+}).$mount('#app'))
