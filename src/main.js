@@ -23,28 +23,34 @@ Vue.prototype.Index = Index
 // console.log(Vant)
 Vue.use(Vant)
 Vue.config.productionTip = false
-const copon = Vue.component('my-component-name', {
+Vue.component('my-component-name', {
   // eslint-disable-next-line space-before-function-paren
-  create() {
+  create () {
     console.log(this
     )
   }
 })
-console.log(copon)
-console.log(router)
+// 路由守卫
 router.beforeEach((to, from, next) => {
-  var isLogin = localStorage.getItem('userinfo')
-  if (isLogin) {
-    next()
-  } else {
-    next({
-      path: '/login'
-    })
-  }
+  // 获取本地存储中的用户信息
+  // JSON.parse这里要转化成对象，存在就是真 true  不存在就是false
+  var islogin = JSON.parse(localStorage.getItem('userinfo'))
 
+  if (to.meta.requireAuth) { // 判断该路由是否需要登录权限
+    if (islogin) { // 判断本地是否存在userinfo
+      next()
+    } else {
+      next({
+        path: '/login'
+      })
+    }
+  } else {
+    next()
+  }
+  /* 如果输入的路由为/login */
   if (to.fullPath === '/login') {
     /* 如果本地 存在 token 则直接跳转到后台首页 */
-    if (isLogin) {
+    if (islogin) {
       next({
         path: '/home'
       })
@@ -53,12 +59,11 @@ router.beforeEach((to, from, next) => {
     }
   }
 })
-console.log(router)
 
-console.log(new Vue({
+new Vue({
   // eslint-disable-next-line space-before-function-paren
 
   router,
   store,
   render: h => h(App)
-}).$mount('#app'))
+}).$mount('#app')

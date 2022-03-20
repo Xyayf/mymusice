@@ -30,7 +30,7 @@ const routes = [
     name: 'Index',
     component: Index
   },
-  {
+  {//视频播放
     path: '/transition_detail',
     name: 'Transition_detail',
     component: Transitiondetail
